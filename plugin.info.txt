@@ -1,0 +1,7 @@
+base   popup
+author G.HS.Robert
+email  robertus0617@gmail.com
+date   2020-03-21
+name   Popup Bubble
+desc   Real popup bubble plugin for DokuWiki
+url    https://www.dokuwiki.org/plugin:popup
