@@ -14,26 +14,28 @@ if(!defined('DOKU_INC')) die();
 class syntax_plugin_popup extends DokuWiki_Syntax_Plugin {
 
     function getType(){
-        return 'substition'; //?
+        return 'substition'; //FIXME: Should find correct type to use in getType()
     }
+    //FIXME: Not able to put DW syntax inside a button or a bubble
 
     function getSort(){
-        return 150; //?
+        return 150; //FIXME: Should find correct sort value to use in getSort()
     }
 
     /**
      * Connect lookup pattern to lexer
      */
     function connectTo($mode) {
-        $this->Lexer->addSpecialPattern('\[.*?\]\^\^.*?\^\^', $mode, 'plugin_popup');
+        $this->Lexer->addSpecialPattern('\[\^.*?\^\]\^\^.*?\^\^', $mode, 'plugin_popup');
     }
+    // FIXME: Bracket syntax conflicts with link syntax
 
     /**
      * Handle the match
      */
     function handle($match, $state, $pos, Doku_Handler $handler) {
-        // get ruby base and text component of a ruby annotation
-        $data = explode(']^^', substr($match, strlen('['), -2));
+        // get button and bubble texts
+        $data = explode('^]^^', substr($match, strlen('[^'), -2));
         return $data;
     }
 
@@ -43,8 +45,8 @@ class syntax_plugin_popup extends DokuWiki_Syntax_Plugin {
     function render($format, Doku_Renderer $renderer, $data) {
         if ($format == 'xhtml') {
             // create a button and a bubble
-            $renderer->doc .= '<div class="popup" onclick="myFunction()">'.hsc($data[0]);
-            $renderer->doc .= '<span class="popuptext" id="myPopup">'.hsc($data[1]).'</span>';
+            $renderer->doc .= '<div class="popup" onclick="myFunction()">'.hsc($data[0]); //FIXME: Button is a div, meaning no inline
+            $renderer->doc .= '<span class="popuptext" id="myPopup">'.hsc($data[1]).'</span>'; //FIXME: Bubble is still using id, so different buttons will call the same bubble
             $renderer->doc .= '</div>';
         }
         if ($format == 'metadata') {

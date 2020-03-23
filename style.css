@@ -39,6 +39,7 @@
   -webkit-animation: fadeIn 1s;
   animation: fadeIn 1s
 }
+/* FIXME: Not able to dismiss the bubble when losing focus */
 
 /* Add animation (fade in the popup) */
 @-webkit-keyframes fadeIn {
