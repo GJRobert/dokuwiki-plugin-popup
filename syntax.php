@@ -45,9 +45,9 @@ class syntax_plugin_popup extends DokuWiki_Syntax_Plugin {
     function render($format, Doku_Renderer $renderer, $data) {
         if ($format == 'xhtml') {
             // create a button and a bubble
-            $renderer->doc .= '<div class="popup" onclick="myFunction()">'.hsc($data[0]); //FIXME: Button is a div, meaning no inline
+            $renderer->doc .= '<span class="popup" onclick="myFunction()">'.hsc($data[0]); //Button should be a span to be inline; fixes #5
             $renderer->doc .= '<span class="popuptext" id="myPopup">'.hsc($data[1]).'</span>'; //FIXME: Bubble is still using id, so different buttons will call the same bubble
-            $renderer->doc .= '</div>';
+            $renderer->doc .= '</span>';
         }
         if ($format == 'metadata') {
             // when the format is "metadata" (abstract)
