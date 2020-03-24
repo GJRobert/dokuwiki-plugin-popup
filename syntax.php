@@ -26,7 +26,7 @@ class syntax_plugin_popup extends DokuWiki_Syntax_Plugin {
      * Connect lookup pattern to lexer
      */
     function connectTo($mode) {
-        $this->Lexer->addSpecialPattern('\[\^.*?\^\]\^\^.*?\^\^', $mode, 'plugin_popup');
+        $this->Lexer->addSpecialPattern('\[\^.*?\^\]\(\^.*?\^\)', $mode, 'plugin_popup');
     }
     // FIXME: Bracket syntax conflicts with link syntax
 
@@ -35,7 +35,7 @@ class syntax_plugin_popup extends DokuWiki_Syntax_Plugin {
      */
     function handle($match, $state, $pos, Doku_Handler $handler) {
         // get button and bubble texts
-        $data = explode('^]^^', substr($match, strlen('[^'), -2));
+        $data = explode('^](^', substr($match, strlen('[^'), -2));
         return $data;
     }
 
