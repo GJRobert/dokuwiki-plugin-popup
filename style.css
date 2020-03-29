@@ -3,6 +3,10 @@
   position: relative;
   display: inline-block;
   cursor: pointer;
+  border: none;
+  border-bottom: 2px solid __border__;
+  border-right: 2px solid __border__;
+  background-color: __background_alt__;
 }
 
 /* The actual popup (appears on top) */
